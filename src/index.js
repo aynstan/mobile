@@ -8,7 +8,7 @@ class mobile extends Component {
   render() {
     return (
       <Provider store={store}>
-        <AppWithNavigation/>
+        <AppWithNavigation />
       </Provider>
     );
   }
