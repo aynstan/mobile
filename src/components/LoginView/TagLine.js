@@ -1,19 +1,11 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { Text } from 'react-native';
 
 export default class TagLine extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text>TagLine</Text>
-      </View>
+      <Text>TagLine</Text>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  }
-});

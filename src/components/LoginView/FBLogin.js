@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
-import { View, Image, TouchableHighlight, StyleSheet } from 'react-native';
+import { Image, TouchableHighlight } from 'react-native';
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
 
-import loginButtonImage from '../images/facebook-login-button.png';
+import loginButtonImage from '../../../images/facebook-login-button.png';
 
 export default class FBLogin extends Component {
+
+  static propTypes = {
+    width: React.PropTypes.number,
+    height: React.PropTypes.number
+  }
 
   login() {
     LoginManager.logInWithReadPermissions(['public_profile'])
@@ -25,19 +30,22 @@ export default class FBLogin extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <TouchableHighlight onPress={this.login}>
-          <Image
-            source={loginButtonImage}
-          />
-        </TouchableHighlight>
-      </View>
+      <TouchableHighlight
+        onPress={this.login}
+        style={{
+          width: this.props.width,
+          height: this.props.height
+        }}
+      >
+        <Image
+          style={{
+            width: this.props.width,
+            height: this.props.height,
+            resizeMode: 'cover'
+          }}
+          source={loginButtonImage}
+        />
+      </TouchableHighlight>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 3
-  }
-});

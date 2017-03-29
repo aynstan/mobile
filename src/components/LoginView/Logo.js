@@ -1,19 +1,25 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { Image } from 'react-native';
+
+import logoImage from '../../../images/logo.png';
 
 export default class Logo extends Component {
 
+  static propTypes = {
+    width: React.PropTypes.number,
+    height: React.PropTypes.number
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Logo</Text>
-      </View>
+      <Image
+        style={{
+          width: this.props.width,
+          height: this.props.height,
+          resizeMode: 'contain'
+        }}
+        source={logoImage}
+      />
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  }
-});
