@@ -1,9 +1,9 @@
 import { StackNavigator } from 'react-navigation';
 
-import LoginView from './views/LoginView';
+import InterestsView from './views/InterestsView';
 
 export default StackNavigator({
-  LoginView: { screen: LoginView }
+  InterestsView: { screen: InterestsView }
 }, {
   headerMode: 'screen'
 });

@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { AppRegistry } from 'react-native';
 import { Provider } from 'react-redux';
-import AppWithNavigation from './navigation';
 import store from './store';
+
+import App from './containers/App';
 
 class mobile extends Component {
   render() {
     return (
       <Provider store={store}>
-        <AppWithNavigation />
+        <App />
       </Provider>
     );
   }

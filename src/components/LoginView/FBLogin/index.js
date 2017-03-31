@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 import { Image, TouchableHighlight } from 'react-native';
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
 
-import loginButtonImage from '../../../images/facebook-login-button.png';
+import loginButtonImage from './images/facebook-login-button.png';
 
 export default class FBLogin extends Component {
 
   static propTypes = {
-    width: React.PropTypes.number,
-    height: React.PropTypes.number
+    style: React.PropTypes.object,
+    callback: React.PropTypes.func
   }
 
-  login() {
+  login(callback) {
     LoginManager.logInWithReadPermissions(['public_profile'])
     .then((result) => {
       if (result.isCancelled) {
@@ -20,6 +20,7 @@ export default class FBLogin extends Component {
         alert(`Login success with permissions: ${result.grantedPermissions.toString()}`);
         AccessToken.getCurrentAccessToken().then((data) => {
           alert(data.accessToken.toString());
+          callback();
         });
       }
     },
@@ -29,18 +30,22 @@ export default class FBLogin extends Component {
   }
 
   render() {
+    const borderStyle = {
+      borderStyle: 'solid',
+      borderWidth: 1
+    };
+
+    const callback = this.props.callback;
+
     return (
       <TouchableHighlight
-        onPress={this.login}
-        style={{
-          width: this.props.width,
-          height: this.props.height
-        }}
+        onPress={() => this.login(callback)}
+        style={Object.assign(this.props.style, borderStyle)}
       >
         <Image
           style={{
-            width: this.props.width,
-            height: this.props.height,
+            width: this.props.style.width,
+            height: this.props.style.height,
             resizeMode: 'cover'
           }}
           source={loginButtonImage}

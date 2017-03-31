@@ -1,3 +1,5 @@
 export default {
-  posts: []
+  user: {
+    authenticated: false
+  }
 };

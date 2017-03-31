@@ -1,23 +1,26 @@
 import React, { Component } from 'react';
 import { Image } from 'react-native';
 
-import logoImage from '../../../images/logo.png';
+import logoImage from './images/logo.png';
 
 export default class Logo extends Component {
 
   static propTypes = {
-    width: React.PropTypes.number,
-    height: React.PropTypes.number
+    style: React.PropTypes.object
   }
 
   render() {
+    const borderStyle = {
+      borderWidth: 1
+    };
+
     return (
       <Image
-        style={{
-          width: this.props.width,
-          height: this.props.height,
+        style={Object.assign({
+          width: this.props.style.width,
+          height: this.props.style.height,
           resizeMode: 'contain'
-        }}
+        }, borderStyle)}
         source={logoImage}
       />
     );
