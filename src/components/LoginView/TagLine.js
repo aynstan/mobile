@@ -18,9 +18,11 @@ export default class TagLine extends Component {
       fontWeight: 'bold'
     };
 
+    const { marginTop } = this.props;
+
     return (
       <Text
-        style={Object.assign({}, borderStyle, defaultStyle, this.props.style)}
+        style={Object.assign(borderStyle, defaultStyle, { marginTop })}
       >
       Met interesting people
       </Text>

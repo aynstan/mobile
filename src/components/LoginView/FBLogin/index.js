@@ -35,17 +35,20 @@ export default class FBLogin extends Component {
       borderWidth: 1
     };
 
-    const callback = this.props.callback;
+    const { callback, width, height } = this.props;
 
     return (
       <TouchableHighlight
         onPress={() => this.login(callback)}
-        style={Object.assign(this.props.style, borderStyle)}
+        style={Object.assign({
+          width,
+          height
+        }, borderStyle)}
       >
         <Image
           style={{
-            width: this.props.style.width,
-            height: this.props.style.height,
+            width,
+            height,
             resizeMode: 'cover'
           }}
           source={loginButtonImage}

@@ -14,11 +14,13 @@ export default class Logo extends Component {
       borderWidth: 1
     };
 
+    const { width, height } = this.props;
+
     return (
       <Image
         style={Object.assign({
-          width: this.props.style.width,
-          height: this.props.style.height,
+          width,
+          height,
           resizeMode: 'contain'
         }, borderStyle)}
         source={logoImage}

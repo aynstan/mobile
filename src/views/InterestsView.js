@@ -1,31 +1,29 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
+
+import BaseView from './Shared/BaseView';
 
 import SD from '../helpers/ScreenDimensions';
 
-import Menu from '../components/Shared/Menu';
-
 export default class LoginView extends Component {
   static navigationOptions = {
-    header: {
+    header: { 
       visible: false,
     }
   }
 
   render() {
     return (
-      <View style={styles.container}>
-        <Menu />
-      </View>
+      <BaseView
+        backgroundColor={'white'}
+        menuBackgrounColor={'white'}
+        menuBorderColor={'black'}
+        height={SD.getHeight(100)}
+        width={SD.getWidth(100)}
+        menuHeight={SD.getHeight(15)}
+      >
+        <View />
+      </BaseView>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-    height: SD.getHeight(100),
-    width: SD.getWidth(100)
-  },
-});

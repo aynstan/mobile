@@ -23,24 +23,18 @@ class LoginView extends Component {
       <View style={styles.container}>
         <View style={styles.login}>
           <Logo
-            style={{
-              width: SD.getWidth(80),
-              height: SD.getHeight(20)
-            }}
+            width={SD.getWidth(80)}
+            height={SD.getHeight(20)}
           />
           <FBLogin
-            style={{
-              width: SD.getWidth(80),
-              height: SD.getHeight(10)
-            }}
+            width={SD.getWidth(80)}
+            height={SD.getHeight(10)}
             callback={this.loginUser.bind(this)}
           />
         </View>
         <View style={styles.details}>
           <TagLine
-            style={{
-              marginTop: SD.getHeight(10)
-            }}
+            marginTop={SD.getHeight(10)}
           />
         </View>
       </View>
@@ -55,7 +49,6 @@ const borderStyle = {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: 'white',
     height: SD.getHeight(100),
     width: SD.getWidth(100)
