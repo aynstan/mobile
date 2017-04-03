@@ -5,15 +5,20 @@ import AppWithNavigation from '../navigation';
 import LoginView from '../views/LoginView';
 
 class App extends Component {
-  render() {
-    const { authenticated } = this.props;
-    if (authenticated) {
-      return <AppWithNavigation />;
-    }
-    return <LoginView />;
-  }
+
+	static propTypes = {
+		authenticated: React.PropTypes.bool
+	}
+
+	render() {
+		const { authenticated } = this.props;
+		if (authenticated) {
+			return <AppWithNavigation />;
+		}
+		return <LoginView />;
+	}
 }
 
 export default connect(state => ({
-  authenticated: state.user.authenticated
+	authenticated: state.user.authenticated
 }))(App);

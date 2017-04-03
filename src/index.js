@@ -6,13 +6,13 @@ import store from './store';
 import App from './containers/App';
 
 class mobile extends Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <App />
-      </Provider>
-    );
-  }
+	render() {
+		return (
+        <Provider store={store}>
+            <App />
+        </Provider>
+		);
+	}
 }
 
 AppRegistry.registerComponent('mobile', () => mobile);

@@ -8,18 +8,22 @@ import { Logo, FBLogin, TagLine } from '../components/LoginView';
 import { loginUser } from '../actions/AuthActions';
 
 class LoginView extends Component {
-  static navigationOptions = {
-    header: {
-      visible: false
-    }
-  }
+	static propTypes = {
+		loginUser: React.PropTypes.func
+	}
 
-  loginUser() {
-    this.props.loginUser();
-  }
+	static navigationOptions = {
+		header: {
+			visible: false
+		}
+	}
 
-  render() {
-    return (
+	loginUser() {
+		this.props.loginUser();
+	}
+
+	render() {
+		return (
       <View style={styles.container}>
         <View style={styles.login}>
           <Logo
@@ -38,43 +42,45 @@ class LoginView extends Component {
           />
         </View>
       </View>
-    );
-  }
+		);
+	}
 }
 
 const borderStyle = {
-  borderStyle: 'solid',
-  borderWidth: 1
+	borderStyle: 'solid',
+	borderWidth: 1
 };
 
+const white = '#fff';
+
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: 'white',
-    height: SD.getHeight(100),
-    width: SD.getWidth(100)
-  },
+	container: {
+		backgroundColor: white,
+		height: SD.getHeight(100),
+		width: SD.getWidth(100)
+	},
 
-  login: Object.assign({
-    height: SD.getHeight(55),
-    width: SD.getWidth(100),
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'flex-end'
-  }, borderStyle),
+	login: Object.assign({
+		height: SD.getHeight(55),
+		width: SD.getWidth(100),
+		flexDirection: 'column',
+		alignItems: 'center',
+		justifyContent: 'flex-end'
+	}, borderStyle),
 
-  details: Object.assign({
-    height: SD.getHeight(45),
-    width: SD.getWidth(100),
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'flex-start'
-  }, borderStyle)
+	details: Object.assign({
+		height: SD.getHeight(45),
+		width: SD.getWidth(100),
+		flexDirection: 'column',
+		alignItems: 'center',
+		justifyContent: 'flex-start'
+	}, borderStyle)
 });
 
 const mapStateToProps = (state) => {
-  const { authenticated } = state.user;
+	const { authenticated } = state.user;
 
-  return { authenticated };
+	return { authenticated };
 };
 
 export default connect(mapStateToProps, { loginUser })(LoginView);

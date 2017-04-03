@@ -1,9 +1,25 @@
 {
-  "extends": "rallycoding",
+  "plugins": [
+    "react",
+    "react-native"
+  ],
   "env": {
+    "es6": true,
+    "node": true,
     "browser": true
   },
-  "globals": {
-    "fetch": true
-  }
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "sourceType": "module",
+  },
+  "rules": {
+      "indent": ["error", "tab"],
+      "no-console": 0
+  },
+  "extends": ["eslint:recommended",
+              "plugin:react/recommended",
+              "plugin:react-native/all"]
 }

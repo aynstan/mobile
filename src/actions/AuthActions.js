@@ -8,8 +8,8 @@ import {
 } from './types';
 
 export const loginUser = () => {
-  return (dispatch) => {
-    dispatch({ type: LOGIN_USER_SUCCESS });
+	return (dispatch) => {
+		dispatch({ type: LOGIN_USER_SUCCESS });
 
     /*firebase.auth().signInWithEmailAndPassword(email, password)
       .then(user => loginUserSuccess(dispatch, user))
@@ -21,5 +21,5 @@ export const loginUser = () => {
           .catch(() => loginUserFail(dispatch));
       });
   };*/
-  };
+	};
 };

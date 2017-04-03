@@ -3,29 +3,29 @@ import { Text } from 'react-native';
 
 export default class TagLine extends Component {
 
-  static propTypes = {
-    style: React.PropTypes.object
-  }
+	static propTypes = {
+		marginTop: React.PropTypes.number
+	}
 
-  render() {
-    const borderStyle = {
-      borderStyle: 'solid',
-      borderWidth: 1
-    };
+	render() {
+		const borderStyle = {
+			borderStyle: 'solid',
+			borderWidth: 1
+		};
 
-    const defaultStyle = {
-      fontSize: 18,
-      fontWeight: 'bold'
-    };
+		const defaultStyle = {
+			fontSize: 18,
+			fontWeight: 'bold'
+		};
 
-    const { marginTop } = this.props;
+		const { marginTop } = this.props;
 
-    return (
+		return (
       <Text
         style={Object.assign(borderStyle, defaultStyle, { marginTop })}
       >
       Met interesting people
       </Text>
-    );
-  }
+		);
+	}
 }

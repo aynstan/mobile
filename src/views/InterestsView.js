@@ -6,14 +6,14 @@ import BaseView from './Shared/BaseView';
 import SD from '../helpers/ScreenDimensions';
 
 export default class LoginView extends Component {
-  static navigationOptions = {
-    header: { 
-      visible: false,
-    }
-  }
+	static navigationOptions = {
+		header: { 
+			visible: false,
+		}
+	}
 
-  render() {
-    return (
+	render() {
+		return (
       <BaseView
         backgroundColor={'white'}
         menuBackgrounColor={'white'}
@@ -24,6 +24,6 @@ export default class LoginView extends Component {
       >
         <View />
       </BaseView>
-    );
-  }
+		);
+	}
 }
