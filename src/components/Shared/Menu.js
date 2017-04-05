@@ -10,6 +10,8 @@ export default class Menu extends Component {
 		borderColor: React.PropTypes.string,
 		height: React.PropTypes.number,
 		width: React.PropTypes.number,
+		spaceBetweenOptions: React.PropTypes.number, // from 0 to 100
+		optionsHeight: React.PropTypes.number, // from 0 to 100
 		children: React.PropTypes.array
 	}
 
@@ -28,13 +30,59 @@ export default class Menu extends Component {
 		StatusBarSize.removeEventListeners();
 	}
 
+	formatMenuOptions({
+		options,
+		menuWidth,
+		menuHeight,
+		spaceBetweenOptions,
+		optionsHeight
+	}) {
+		// 2 * 20 = 60
+		const totalSpaceBetweenOptions = (options.length-1) * spaceBetweenOptions;
+		// 1000 - 100
+		// x - 60
+		const totalSpaceForOptions = menuWidth - ((menuWidth * totalSpaceBetweenOptions) / 100);
+		const menuOptionWidth = totalSpaceForOptions / options.length;
+		const menuOptionHeight = ( menuHeight * optionsHeight ) / 100;
+
+		console.log(`menuOptionWidth: ${menuOptionWidth}`);
+		console.log(`menuOptionHeight: ${menuOptionHeight}`);
+		console.log(`menuWidth: ${menuWidth}`);
+		console.log(`menuHeight: ${menuHeight}`);
+
+		return options.map((menuItem, position) => {
+			if (position === 0) {
+				return React.cloneElement(menuItem, {
+					marginLeft: 10,
+					key: position,
+					width: menuOptionWidth,
+					height: menuOptionHeight
+				});
+			} else if (position === (options.length-1)) {
+				return React.cloneElement(menuItem, {
+					marginRight: 10,
+					key: position,
+					width: menuOptionWidth,
+					height: menuOptionHeight
+				});
+			}
+			return React.cloneElement(menuItem, {
+				key: position,
+				width: menuOptionWidth,
+				height: menuOptionHeight
+			});
+		});
+	}
+
 	render() {
 		const {
-       height,
-       width,
-       backgroundColor,
-       borderColor,
-       children: options
+				height,
+				width,
+				spaceBetweenOptions,
+				optionsHeight,
+				backgroundColor,
+				borderColor,
+				children: options
      } = this.props;
 
 		const defaultStyle = {
@@ -46,23 +94,20 @@ export default class Menu extends Component {
 			borderStyle: 'solid',
 			borderWidth: 1,
 			flexDirection: 'row',
-			justifyContent: 'space-between'
+			justifyContent: 'space-between',
+			alignItems: 'center'
 		};
 
+		console.log(`height: ${height}`);
+		console.log(`width: ${width}`);
+
 		// Spacing between first/last element and edge of the screen
-		const menuOptions = options.map((menuItem, position) => {
-			if (position === 0) {
-				return React.cloneElement(menuItem, {
-					marginLeft: 10,
-					key: position
-				});
-			} else if (position === (options.length-1)) {
-				return React.cloneElement(menuItem, {
-					marginRight: 10,
-					key: position
-				});
-			}
-			return menuItem
+		const menuOptions = this.formatMenuOptions({
+			options,
+			menuWidth: width,
+			menuHeight: height,
+			spaceBetweenOptions,
+			optionsHeight
 		});
 
 		return (

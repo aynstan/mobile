@@ -42,6 +42,8 @@ export default class BaseView extends Component {
           borderColor={menuBorderColor}
           height={menuHeight}
           width={width}
+					spaceBetweenOptions={20}
+					optionsHeight={80}
         >
 					<MenuOption icon={require('./images/create-question.png')}/>
 					<MenuOption icon={require('./images/create-question.png')} />

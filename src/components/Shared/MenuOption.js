@@ -7,7 +7,9 @@ export default class MenuItem extends Component {
 		icon: React.PropTypes.number,
 		borderColor: React.PropTypes.string,
 		marginLeft: React.PropTypes.number,
-		marginRight: React.PropTypes.number
+		marginRight: React.PropTypes.number,
+		width: React.PropTypes.number,
+		height: React.PropTypes.number
 	}
 
 	render() {
@@ -15,7 +17,9 @@ export default class MenuItem extends Component {
 			borderColor,
 			icon,
 			marginLeft,
-			marginRight
+			marginRight,
+			width,
+			height
 		} = this.props;
 
 		const borderStyle = {
@@ -26,12 +30,14 @@ export default class MenuItem extends Component {
 		const touchableHighlightStyle = Object.assign({
 			borderColor,
 			marginLeft,
-			marginRight
+			marginRight,
+			width,
+			height
 		}, borderStyle);
 
 		const imageStyle = {
-			width: 10,
-			height: 1,
+			width,
+			height,
 			resizeMode: 'cover'
 		};
 

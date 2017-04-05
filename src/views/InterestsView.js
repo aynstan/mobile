@@ -7,7 +7,7 @@ import SD from '../helpers/ScreenDimensions';
 
 export default class LoginView extends Component {
 	static navigationOptions = {
-		header: { 
+		header: {
 			visible: false,
 		}
 	}
@@ -18,9 +18,9 @@ export default class LoginView extends Component {
         backgroundColor={'white'}
         menuBackgrounColor={'white'}
         menuBorderColor={'black'}
+        menuHeight={SD.getHeight(8)}
         height={SD.getHeight(100)}
         width={SD.getWidth(100)}
-        menuHeight={SD.getHeight(15)}
       >
         <View />
       </BaseView>
