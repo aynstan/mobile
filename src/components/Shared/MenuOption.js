@@ -36,9 +36,10 @@ export default class MenuItem extends Component {
 		}, borderStyle);
 
 		const imageStyle = {
-			width,
-			height,
-			resizeMode: 'cover'
+			flex: 1,
+			width: null,
+			height: null,
+			resizeMode: 'contain'
 		};
 
 		return (

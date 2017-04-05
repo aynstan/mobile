@@ -39,9 +39,10 @@ export default class FBLogin extends Component {
 		const touchableHighlightStyle = Object.assign({ width, height }, borderStyle);
 
 		const imageStyle = {
-			width,
-			height,
-			resizeMode: 'cover'
+			flex: 1,
+			width: null,
+			height: null,
+			resizeMode: 'contain'
 		};
 
 		return (
