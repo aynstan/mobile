@@ -1,0 +1,1 @@
+makes percentages easier to read
