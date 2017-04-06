@@ -34,9 +34,9 @@ class StatusBarSize {
 			this.statusBarSizeHandlers[deviceStatusBarHeightEvent] =
       StatusBarIOS.addListener(
         deviceStatusBarHeightEvent,
-        (statusBarData) => {
-	this.currentHeight = statusBarData.frame.height;
-}
+				(statusBarData) => {
+					this.currentHeight = statusBarData.frame.height;
+				}
       );
 		});
 	}

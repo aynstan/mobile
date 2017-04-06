@@ -10,8 +10,8 @@ export default class Menu extends Component {
 		borderColor: React.PropTypes.string,
 		height: React.PropTypes.number,
 		width: React.PropTypes.number,
-		spaceBetweenOptions: React.PropTypes.number, // from 0 to 100
-		optionsHeight: React.PropTypes.number, // from 0 to 100
+		spaceBetweenOptions: React.PropTypes.number, // from 0 to 100 %
+		optionsHeight: React.PropTypes.number, // from 0 to 100 %
 		children: React.PropTypes.array
 	}
 
@@ -29,32 +29,27 @@ export default class Menu extends Component {
 		spaceBetweenOptions,
 		optionsHeight
 	}) {
-		const totalSpaceBetweenOptions = (options.length-1) * spaceBetweenOptions;
-		const totalSpaceForOptions = menuWidth - ((menuWidth * totalSpaceBetweenOptions) / 100);
-		const menuOptionWidth = totalSpaceForOptions / options.length;
+		const totalSpaceBetweenOptionsPercentage = (options.length-1) * spaceBetweenOptions;
+		const totalSpaceForAllOptionsRemovingSpace = menuWidth - ((menuWidth * totalSpaceBetweenOptionsPercentage) / 100);
+		const menuOptionWidth = totalSpaceForAllOptionsRemovingSpace / options.length;
 		const menuOptionHeight = ( menuHeight * optionsHeight ) / 100;
 
 		return options.map((menuItem, position) => {
-			if (position === 0) {
-				return React.cloneElement(menuItem, {
-					marginLeft: 10,
-					key: position,
-					width: menuOptionWidth,
-					height: menuOptionHeight
-				});
-			} else if (position === (options.length-1)) {
-				return React.cloneElement(menuItem, {
-					marginRight: 10,
-					key: position,
-					width: menuOptionWidth,
-					height: menuOptionHeight
-				});
-			}
-			return React.cloneElement(menuItem, {
+			const baseProps = {
 				key: position,
 				width: menuOptionWidth,
 				height: menuOptionHeight
-			});
+			};
+			if (position === 0) {
+				return React.cloneElement(menuItem, Object.assign({
+					marginLeft: 10
+				}, baseProps));
+			} else if (position === (options.length-1)) {
+				return React.cloneElement(menuItem, Object.assign({
+					marginRight: 10
+				}, baseProps));
+			}
+			return React.cloneElement(menuItem, baseProps);
 		});
 	}
 
@@ -81,9 +76,6 @@ export default class Menu extends Component {
 			justifyContent: 'space-between',
 			alignItems: 'center'
 		};
-
-		console.log(`height: ${height}`);
-		console.log(`width: ${width}`);
 
 		// Spacing between first/last element and edge of the screen
 		const menuOptions = this.formatMenuOptions({
