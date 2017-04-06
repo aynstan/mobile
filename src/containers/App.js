@@ -2,12 +2,22 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import AppWithNavigation from '../navigation';
 
+import StatusBarSize from '../helpers/StatusBarSize';
+
 import LoginView from '../views/LoginView';
 
 class App extends Component {
 
 	static propTypes = {
 		authenticated: React.PropTypes.bool
+	}
+
+	componentDidMount() {
+		StatusBarSize.addEventListeners();
+	}
+
+	componentWillUnmount() {
+		StatusBarSize.removeEventListeners();
 	}
 
 	render() {

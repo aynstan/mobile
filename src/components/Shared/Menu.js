@@ -22,14 +22,6 @@ export default class Menu extends Component {
 		};
 	}
 
-	componentDidMount() {
-		StatusBarSize.addEventListeners();
-	}
-
-	componentWillUnmount() {
-		StatusBarSize.removeEventListeners();
-	}
-
 	formatMenuOptions({
 		options,
 		menuWidth,
