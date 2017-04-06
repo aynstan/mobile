@@ -9,7 +9,8 @@ export default class MenuItem extends Component {
 		marginLeft: React.PropTypes.number,
 		marginRight: React.PropTypes.number,
 		width: React.PropTypes.number,
-		height: React.PropTypes.number
+		height: React.PropTypes.number,
+		onPress: React.PropTypes.func
 	}
 
 	render() {
@@ -19,7 +20,8 @@ export default class MenuItem extends Component {
 			marginLeft,
 			marginRight,
 			width,
-			height
+			height,
+			onPress
 		} = this.props;
 
 		const borderStyle = {
@@ -44,7 +46,7 @@ export default class MenuItem extends Component {
 
 		return (
 			<TouchableHighlight
-				onPress={() => 'test' }
+				onPress={onPress}
 				style={touchableHighlightStyle}
 			>
 				<Image

@@ -37,18 +37,10 @@ export default class Menu extends Component {
 		spaceBetweenOptions,
 		optionsHeight
 	}) {
-		// 2 * 20 = 60
 		const totalSpaceBetweenOptions = (options.length-1) * spaceBetweenOptions;
-		// 1000 - 100
-		// x - 60
 		const totalSpaceForOptions = menuWidth - ((menuWidth * totalSpaceBetweenOptions) / 100);
 		const menuOptionWidth = totalSpaceForOptions / options.length;
 		const menuOptionHeight = ( menuHeight * optionsHeight ) / 100;
-
-		console.log(`menuOptionWidth: ${menuOptionWidth}`);
-		console.log(`menuOptionHeight: ${menuOptionHeight}`);
-		console.log(`menuWidth: ${menuWidth}`);
-		console.log(`menuHeight: ${menuHeight}`);
 
 		return options.map((menuItem, position) => {
 			if (position === 0) {

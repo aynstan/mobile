@@ -6,7 +6,7 @@ import BaseView from './Shared/BaseView';
 
 import SD from '../helpers/ScreenDimensions';
 
-export default class LoginView extends Component {
+export default class CreateQuestionView extends Component {
 	static navigationOptions = {
 		header: {
 			visible: false
@@ -35,7 +35,7 @@ export default class LoginView extends Component {
 				]}
       >
         <View>
-					<Text>Interests View</Text>
+					<Text>Question View</Text>
 				</View>
       </BaseView>
 		);

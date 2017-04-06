@@ -13,7 +13,35 @@ export default class BaseView extends Component {
 		height: React.PropTypes.number,
 		width: React.PropTypes.number,
 		menuHeight: React.PropTypes.number,
-		children: React.PropTypes.object
+		menuOptions: React.PropTypes.array,
+		children: React.PropTypes.object,
+		navigation: React.PropTypes.object
+	}
+
+	generateMenuOptions(menuOptions) {
+		const { navigate } = this.props.navigation;
+
+		console.log(`menuOptions: ${menuOptions}`);
+		console.log(`navigate: ${navigate}`);
+
+		return menuOptions.map((menuOption) => {
+			switch(menuOption) {
+			case 'CreateQuestionView':
+				return (<MenuOption
+						key={menuOption}
+						icon={require('./images/question.png')}
+						onPress={() => navigate(menuOption) }
+					/>);
+			case 'InterestsView':
+				return (<MenuOption
+						key={menuOption}
+						icon={require('./images/question.png')}
+						onPress={() => navigate(menuOption) }
+					/>);
+			default:
+				return;
+			}
+		});
 	}
 
 	render() {
@@ -24,6 +52,7 @@ export default class BaseView extends Component {
       backgroundColor,
       menuBackgrounColor,
       menuBorderColor,
+			menuOptions,
       children: options
     } = this.props;
 
@@ -45,9 +74,7 @@ export default class BaseView extends Component {
 					spaceBetweenOptions={20}
 					optionsHeight={80}
         >
-					<MenuOption icon={require('./images/create-question.png')}/>
-					<MenuOption icon={require('./images/create-question.png')} />
-					<MenuOption icon={require('./images/create-question.png')} />
+					{this.generateMenuOptions(menuOptions)}
 				</Menu>
         {options}
       </View>
